@@ -1,0 +1,31 @@
+{
+  "name": "telegram-repo-backup-bot",
+  "description": "A Telegram bot that clones a GitHub repo and sends it to the owner on startup.",
+  "repository": "https://github.com/Partik1165/repoclone",
+  "stack": "heroku-22",
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "env": {
+    "BOT_TOKEN": {
+      "description": "Your Telegram Bot Token from @BotFather",
+      "required": true
+    },
+    "OWNER_ID": {
+      "description": "Your Telegram user ID to receive the cloned repo zip",
+      "required": true
+    },
+    "GIT_REPO": {
+      "description": "The GitHub repo URL to clone",
+      "required": true
+    }
+  },
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
+}
